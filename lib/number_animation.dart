@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class NumberAnimation extends StatefulWidget {
-  num start; // start number
-  num end; // end nunber
-  bool isInt; // true for int, false for double
-  Duration duration; // animation duration
-  TextStyle style; // TextStyle
-  TextAlign textAlign; // TextAlign
-  StrutStyle strutStyle; // StrutStyle
-  String before; // number prefix
-  String after; // number suffix
-  int decimalPoint; // decimal point
-  bool isLoading; // is loading?
-  String loadingPlaceHolder; // loading placeholder
+  final num start; // start number
+  final num end; // end nunber
+  final bool isInt; // true for int, false for double
+  final Duration duration; // animation duration
+  final TextStyle style; // TextStyle
+  final TextAlign textAlign; // TextAlign
+  final StrutStyle strutStyle; // StrutStyle
+  final String before; // number prefix
+  final String after; // number suffix
+  final int decimalPoint; // decimal point
+  final bool isLoading; // is loading?
+  final String loadingPlaceHolder; // loading placeholder
   NumberAnimation({
     this.start = 0.0,
     this.end,
