@@ -1,18 +1,43 @@
 import 'package:flutter/material.dart';
 
 class NumberAnimation extends StatefulWidget {
-  final num start; // start number
-  final num end; // end nunber
-  final bool isInt; // true for int, false for double
-  final Duration duration; // animation duration
-  final TextStyle style; // TextStyle
-  final TextAlign textAlign; // TextAlign
-  final StrutStyle strutStyle; // StrutStyle
-  final String before; // number prefix
-  final String after; // number suffix
-  final int decimalPoint; // decimal point
-  final bool isLoading; // is loading?
-  final String loadingPlaceHolder; // loading placeholder
+  /// start number
+  final num start;
+
+  /// end nunber
+  final num end;
+
+  /// true for int, false for double
+  final bool isInt;
+
+  /// animation duration
+  final Duration duration;
+
+  /// TextStyle
+  final TextStyle style;
+
+  /// TextAlign
+  final TextAlign textAlign;
+
+  /// StrutStyle
+  final StrutStyle strutStyle;
+
+  /// number prefix
+  final String before;
+
+  /// number suffix
+  final String after;
+
+  /// decimal point
+  final int decimalPoint;
+
+  /// is on loading?
+  final bool isLoading;
+
+  /// loading placeholder
+  final String loadingPlaceHolder;
+
+  /// constructor
   NumberAnimation({
     this.start = 0.0,
     this.end,
@@ -36,57 +61,67 @@ class NumberAnimation extends StatefulWidget {
       }
     }
   }
+
+  /// create state
   @override
   _NumberAnimationState createState() => _NumberAnimationState();
 }
 
+/// state
 class _NumberAnimationState extends State<NumberAnimation>
     with SingleTickerProviderStateMixin {
-  Animation animation;
+  Animation _animation;
+  Animation _curve;
+  bool _hasShowNumber = false; // has been show once
   AnimationController controller;
-  Animation curve;
-  bool hasShowNumber = false; // has been show once
+
+  // initState
   @override
   void initState() {
     super.initState();
     controller = AnimationController(duration: widget.duration, vsync: this);
-    curve = new CurvedAnimation(parent: controller, curve: Curves.easeOut);
+    _curve = new CurvedAnimation(parent: controller, curve: Curves.easeOut);
     if (widget.isLoading == false) {
       Animation<double> animation = Tween<double>(
               begin: widget.start.toDouble(), end: widget.end.toDouble())
-          .animate(curve);
-      this.animation = animation;
+          .animate(_curve);
+      this._animation = animation;
       controller.forward();
-      hasShowNumber = true;
+      _hasShowNumber = true;
     }
   }
 
+  /// dispose
   @override
   void dispose() {
     super.dispose();
     controller.dispose();
   }
 
+  // didUpdateWidget
   @override
   void didUpdateWidget(NumberAnimation oldWidget) {
     if (widget.isLoading == true) {
       return;
     }
-    if (oldWidget.end == widget.end && hasShowNumber == true) {
+    if (oldWidget.end == widget.end && _hasShowNumber == true) {
       return;
     }
     Animation<double> animation = Tween<double>(
-            begin: this.animation != null ? this.animation.value : widget.start,
+            begin: this._animation != null
+                ? this._animation.value
+                : widget.start.toDouble(),
             end: widget.end.toDouble())
-        .animate(this.curve);
-    this.animation = animation;
+        .animate(this._curve);
+    this._animation = animation;
     this.controller
       ..reset()
       ..forward();
-    hasShowNumber = true;
+    _hasShowNumber = true;
     super.didUpdateWidget(oldWidget);
   }
 
+  /// build
   @override
   Widget build(BuildContext context) {
     TextStyle style = widget.style;
@@ -101,7 +136,7 @@ class _NumberAnimationState extends State<NumberAnimation>
       );
     }
     return AnimatedBuilder(
-      animation: animation,
+      animation: _animation,
       builder: (context, child) {
         if (widget.isLoading == true) {
           return Text(
@@ -113,14 +148,14 @@ class _NumberAnimationState extends State<NumberAnimation>
         }
         if (widget.isInt) {
           return Text(
-            '${widget.before}${animation.value.toInt().toString()}${widget.after}',
+            '${widget.before}${_animation.value.toInt().toString()}${widget.after}',
             style: style,
             textAlign: textAlign,
             strutStyle: strutStyle,
           );
         } else {
           return Text(
-            '${widget.before}${animation.value.toStringAsFixed(widget.decimalPoint)}${widget.after}',
+            '${widget.before}${_animation.value.toStringAsFixed(widget.decimalPoint)}${widget.after}',
             style: style,
             textAlign: textAlign,
             strutStyle: strutStyle,
