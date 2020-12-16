@@ -1,6 +1,6 @@
 name: number_animation
 description: A simple and easy to use widget to help you show numbers by animation.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/chvin/number_animation
 
 environment:
