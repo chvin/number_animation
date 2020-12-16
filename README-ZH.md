@@ -23,7 +23,7 @@ Widget build(BuildContext context) {
 ```
 
 ## 属性API
-请查看注释：[number_animation.dart](number_animation/lib/number_animation.dart)
+请查看注释：[number_animation.dart](lib/number_animation.dart)
 
 ## 完整的示例代码
 [Exmaple](example/number_animation.dart)

@@ -8,3 +8,6 @@
 
 ## 0.0.3
 * add readme; add dartdoc
+
+## 0.0.4
+* update readme;
