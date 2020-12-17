@@ -6,7 +6,7 @@ A simple and easy to use widget to help you show numbers by animation.
 ## Add dependency
 ```yaml
 dependencies:
-  dio: ^0.0.3  // last version
+  dio: ^0.1.0  // last version
 ```
 
 ## Super simple to use
