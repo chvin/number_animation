@@ -6,7 +6,7 @@ A simple and easy to use widget to help you show numbers by animation.
 ## Add dependency
 ```yaml
 dependencies:
-  dio: ^0.1.0  // last version
+  dio: ^0.1.1  // last version
 ```
 
 ## Super simple to use
@@ -23,7 +23,7 @@ Widget build(BuildContext context) {
 ```
 
 ## Fields API
-请查看注释：[number_animation.dart](lib/number_animation.dart)
+See comments: [number_animation.dart](lib/number_animation.dart)
 
 ## Full example code
 [Exmaple](example/number_animation.dart)
