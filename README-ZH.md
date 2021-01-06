@@ -6,7 +6,7 @@
 ## 添加依赖
 ```yaml
 dependencies:
-  dio: ^0.1.1  // 请使用pub上的最新版本
+  number_animation: ^0.1.2
 ```
 
 ## 简单示例
@@ -23,7 +23,20 @@ Widget build(BuildContext context) {
 ```
 
 ## 属性API
-请查看注释：[number_animation.dart](lib/number_animation.dart)
+| 参数 | 说明 | 类型 | 默认值 |
+| - | - | - | - |
+| start | start number | num  | 0.0 |
+| end | end nunber | String  | null |
+| isInt | true for int, false for double | String  | false |
+| duration | animation duration | String  | const Duration(milliseconds: 1000) |
+| style | TextStyle | String  | null |
+| textAlign | TextAlign | String  | null |
+| strutStyle | StrutStyle | String  | null |
+| before | number prefix | String  | '' |
+| after | number suffix | String  | '' |
+| decimalPoint | decimal point, enable when 'isInt = false' | int  | 2 |
+| isLoading | is on loading | String  | false |
+| loadingPlaceHolder | loading placeholder, enable when 'isLoading = true' | String  | '' |
 
 ## 完整的示例代码
 [Exmaple](example/number_animation.dart)

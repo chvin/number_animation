@@ -6,7 +6,7 @@ A simple and easy to use widget to help you show numbers by animation.
 ## Add dependency
 ```yaml
 dependencies:
-  dio: ^0.1.1  // last version
+  number_animation: ^0.1.2
 ```
 
 ## Super simple to use
@@ -23,7 +23,20 @@ Widget build(BuildContext context) {
 ```
 
 ## Fields API
-See comments: [number_animation.dart](lib/number_animation.dart)
+| param | description | type | default value |
+| - | - | - | - |
+| start | start number | num  | 0.0 |
+| end | end nunber | String  | null |
+| isInt | true for int, false for double | String  | false |
+| duration | animation duration | String  | const Duration(milliseconds: 1000) |
+| style | TextStyle | String  | null |
+| textAlign | TextAlign | String  | null |
+| strutStyle | StrutStyle | String  | null |
+| before | number prefix | String  | '' |
+| after | number suffix | String  | '' |
+| decimalPoint | decimal point, enable when 'isInt = false' | int  | 2 |
+| isLoading | is on loading | String  | false |
+| loadingPlaceHolder | loading placeholder, enable when 'isLoading = true' | String  | '' |
 
 ## Full example code
 [Exmaple](example/number_animation.dart)
