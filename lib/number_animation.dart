@@ -123,9 +123,9 @@ class _NumberAnimationState extends State<NumberAnimation>
   /// build
   @override
   Widget build(BuildContext context) {
-    TextStyle style = widget.style!;
-    TextAlign textAlign = widget.textAlign!;
-    StrutStyle strutStyle = widget.strutStyle!;
+    TextStyle? style = widget.style;
+    TextAlign? textAlign = widget.textAlign;
+    StrutStyle? strutStyle = widget.strutStyle;
     if (widget.isLoading == true) {
       return Text(
         widget.loadingPlaceHolder,
