@@ -4,7 +4,7 @@ class NumberAnimation extends StatefulWidget {
   /// start number
   final num start;
 
-  /// end nunber
+  /// end number
   final num end;
 
   /// true for int, false for double
@@ -14,13 +14,13 @@ class NumberAnimation extends StatefulWidget {
   final Duration duration;
 
   /// TextStyle
-  final TextStyle style;
+  final TextStyle? style;
 
   /// TextAlign
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
 
   /// StrutStyle
-  final StrutStyle strutStyle;
+  final StrutStyle? strutStyle;
 
   /// number prefix
   final String before;
@@ -40,7 +40,7 @@ class NumberAnimation extends StatefulWidget {
   /// constructor
   NumberAnimation({
     this.start = 0.0,
-    this.end,
+    required this.end,
     this.isInt = false,
     this.style,
     this.textAlign,
@@ -70,19 +70,18 @@ class NumberAnimation extends StatefulWidget {
 /// state
 class _NumberAnimationState extends State<NumberAnimation>
     with SingleTickerProviderStateMixin {
-  Animation _animation;
-  Animation _curve;
+  late Animation _animation;
+  late Animation<double> _curve;
   bool _hasShowNumber = false; // has been show once
-  AnimationController controller;
+  late AnimationController controller = AnimationController(duration: widget.duration, vsync: this);
 
   // initState
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: widget.duration, vsync: this);
-    _curve = new CurvedAnimation(parent: controller, curve: Curves.easeOut);
+    Animation<double>? _curve = new CurvedAnimation(parent: controller, curve: Curves.easeOut);
     if (widget.isLoading == false) {
-      Animation<double> animation = Tween<double>(
+      Animation<double>? animation = Tween<double>(
               begin: widget.start.toDouble(), end: widget.end.toDouble())
           .animate(_curve);
       this._animation = animation;
@@ -107,7 +106,7 @@ class _NumberAnimationState extends State<NumberAnimation>
     if (oldWidget.end == widget.end && _hasShowNumber == true) {
       return;
     }
-    Animation<double> animation = Tween<double>(
+    Animation<double>? animation = Tween<double>(
             begin: this._animation != null
                 ? this._animation.value
                 : widget.start.toDouble(),
@@ -124,9 +123,9 @@ class _NumberAnimationState extends State<NumberAnimation>
   /// build
   @override
   Widget build(BuildContext context) {
-    TextStyle style = widget.style;
-    TextAlign textAlign = widget.textAlign;
-    StrutStyle strutStyle = widget.strutStyle;
+    TextStyle style = widget.style!;
+    TextAlign textAlign = widget.textAlign!;
+    StrutStyle strutStyle = widget.strutStyle!;
     if (widget.isLoading == true) {
       return Text(
         widget.loadingPlaceHolder,
