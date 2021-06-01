@@ -66,8 +66,7 @@ class NumberAnimation extends StatefulWidget {
 }
 
 /// state
-class _NumberAnimationState extends State<NumberAnimation>
-    with SingleTickerProviderStateMixin {
+class _NumberAnimationState extends State<NumberAnimation> with SingleTickerProviderStateMixin {
   Animation? _animation;
   late Animation<double> _curve = new CurvedAnimation(parent: controller, curve: Curves.easeOut);
   bool _hasShowNumber = false; // has been show once
@@ -78,9 +77,8 @@ class _NumberAnimationState extends State<NumberAnimation>
   void initState() {
     super.initState();
     if (widget.isLoading == false) {
-      Animation<double>? animation = Tween<double>(
-              begin: widget.start.toDouble(), end: widget.end.toDouble())
-          .animate(_curve);
+      Animation<double>? animation =
+          Tween<double>(begin: widget.start.toDouble(), end: widget.end.toDouble()).animate(_curve);
       this._animation = animation;
       controller.forward();
       _hasShowNumber = true;
@@ -104,11 +102,9 @@ class _NumberAnimationState extends State<NumberAnimation>
       return;
     }
     Animation<double>? animation = Tween<double>(
-            begin: this._animation != null
-                ? this._animation?.value
-                : widget.start.toDouble(),
-            end: widget.end.toDouble())
-        .animate(this._curve);
+      begin: this._animation != null ? this._animation?.value : widget.start.toDouble(),
+      end: widget.end.toDouble(),
+    ).animate(this._curve);
     this._animation = animation;
     this.controller
       ..reset()
