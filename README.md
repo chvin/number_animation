@@ -6,7 +6,7 @@ A simple and easy to use widget to help you show numbers by animation.
 ## Add dependency
 ```yaml
 dependencies:
-  number_animation: ^0.1.2
+  number_animation: ^0.2.0
 ```
 
 ## Super simple to use

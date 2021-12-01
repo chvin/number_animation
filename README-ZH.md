@@ -6,7 +6,7 @@
 ## 添加依赖
 ```yaml
 dependencies:
-  number_animation: ^0.1.2
+  number_animation: ^0.2.0
 ```
 
 ## 简单示例

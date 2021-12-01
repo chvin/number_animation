@@ -1,3 +1,6 @@
+## 0.2.0
+* Supports null safety
+
 ## 0.1.2
 * update readme
 
